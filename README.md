@@ -1,18 +1,93 @@
-Project Report: Hotel Management System1. Introduction and OverviewThis project demonstrates the development of a Hotel Management System implemented as a console-based Python application. It includes essential reception functions such as viewing room statuses, reserving rooms, checking guests in and out, and viewing active guest details. Data is managed using in-memory volatile data structures rather than a persistent database or file system, reflecting constraints imposed for educational programming purposes.   The project aims to teach fundamental programming concepts, raw algorithmic logic, and basic data management within Python without relying on external modules, file I/O, or even built-in type conversion functions like int() and str().   2. Problem StatementTraditional hotel tracking systems rely on complex databases or manual paper ledgers which are prone to errors and double bookings. This project explores a minimalistic, digitized approach that focuses solely on core hospitality operations using simple data structures. This allows budding programmers to understand the flow of state transitions, custom input parsing, and data validation without facing the complexity overhead of external libraries.3. ObjectivesEnable room reservations by capturing guest names and phone numbers.   Facilitate seamless check-in and check-out workflows with automatic room status updates.   Provide a clean summary of current room availability and active guest details.   Parse all numerical inputs algorithmically from scratch, character-by-character.   Keep all data in-memory during program runtime without external dependencies.Provide an easy-to-navigate command-line interface for user interaction.   4. Tools and TechnologiesProgramming Language: Python 3.x   Data Handling: Python nested lists / 2D arrays (in-memory)   User Interface: Command Line Interface (CLI)   No usage of: File I/O (open()), external libraries, or built-in casting functions (like int() or str()) to enforce algorithmic constraints and simplicity.5. System Design and ImplementationData Structures:Rooms Array: Stored as a 2D list named my_hotel. Each nested list represents a room containing: [Room Number, Status Code, Guest Name, Phone Number].   Status Codes: An integer logic system where 0 = Available, 1 = Reserved, and 2 = Checked In.   Workflow:Users interact with a main menu to select an action.   When reserving, the system checks if the status is 0 before capturing guest details and updating the status to 1.   During check-in, the system verifies the room is 1 (Reserved) before transitioning it to 2 (Checked In).   Check-out and cancellations clear the guest strings and revert the status integer back to 0.   User Interface:Initial menu loops continuously, permitting operations from 1 to 6, or 7 to exit.   Custom parsed inputs are validated, with informative error messages for invalid choices or unavailable rooms.   6. Code StructureAll functionality is implemented in a single Python script for simplicity and demonstration purposes.The program relies on Python's native 2D lists for state management.   Modular functions handle discrete tasks like reserve_room, check_in, check_out, and show_guest_details.   Dedicated custom parsers (read_number and number_to_text) manually handle data type conversions.   7. Code SkeletonPython# Core Data Structure
-my_hotel = [
-    [101, 0, "", ""], # [Room, Status, Name, Phone]
-    [102, 0, "", ""]
-]
+# Hotel Management System
 
-# Custom Parser Example
-def read_number(prompt_msg):
-    # Algorithmic string-to-int conversion...
-    
-# Core Operation Example
-def reserve_room(data_table):
-    # Logic to check availability and update nested list...
+A console-based Python application for managing hotel room bookings, guest check-ins, check-outs, and reservations.
 
-def main():
-    while True:
-        # Display menu and route to modular functions...
-8. Testing and ValidationTested custom read_number parser to ensure it correctly loops through string indices and mathematically constructs integers without crashing.   Verified room availability enforcement (e.g., preventing a check-in for a room that isn't reserved).   Validated state resets, ensuring check-outs properly erase guest strings and free up the room integer.   Ensured continuous menu loops handle invalid input digits gracefully.   9. LimitationsNo persistent data storage; all reservations and guest details are lost after the program closes.The number of rooms is hardcoded into the initial array rather than generated dynamically.Single script limits modularity and scalability; no separation of concerns.10. Future Work and EnhancementsAdd persistent storage mechanisms (like text files or CSVs) to save the 2D array between sessions.Implement dynamic room generation allowing the user to specify hotel size on startup.Refactor into multiple modules (e.g., separating the custom parsers from the core reception logic) for better structure.Add an automated billing or timestamp system for when guests check out.11. ConclusionThe project successfully demonstrates a foundational hospitality system with vital reception operations implemented through Python's native list structures. With adherence to strict constraints disallowing external modules and standard built-in casting, the system offers robust core logic suitable for learning algorithmic data manipulation.   The Hotel Management System serves as an excellent educational platform for understanding:Basic state-machine logic and workflowsRaw character parsing and mathematical type conversionPython programming fundamentals (nested arrays and while loops)Menu-driven CLI application development
+## Project Overview
+
+This project demonstrates a simple hotel management workflow using Python. It allows a hotel receptionist to manage room availability, reserve rooms, check guests in and out, and cancel reservations from a text-based menu.
+
+The system uses a nested list to store room details, including:
+
+- Room number
+- Status (available, reserved, checked in)
+- Guest name
+- Phone number
+
+## Features
+
+- View all rooms and their current status
+- Reserve an available room
+- Check in a guest with an active reservation
+- Check out a guest from a checked-in room
+- Cancel a reservation
+- View guest details for all current bookings
+- Input validation for room numbers and menu options
+
+## Room Status Codes
+
+Each room record follows this structure:
+
+```python
+[room_number, status, guest_name, phone_number]
+```
+
+Status values:
+
+- `0` = Available
+- `1` = Reserved
+- `2` = Checked in
+
+## Files
+
+- `Hotel Management.py` - Main Python application containing all logic
+- `README.md` - Project documentation
+
+## How to Run
+
+1. Open a terminal or command prompt.
+2. Navigate to the project directory.
+3. Run the following command:
+
+```bash
+python "Hotel Management.py"
+```
+
+## Example Menu
+
+```text
+HOTEL MANAGEMENT SYSTEM
+1. View rooms
+2. Reserve a room
+3. Check in
+4. Check out
+5. Cancel reservation
+6. View guest details
+7. Exit
+```
+
+## Workflow Example
+
+- View rooms to see which are available
+- Reserve a room by entering the room number
+- Enter the guest name and phone number
+- Confirm the guest check-in
+- Check out the guest when they leave
+- Cancel reservation if needed
+
+## Learning Objectives
+
+This project helps practice:
+
+- Python functions
+- Nested lists and data manipulation
+- Basic input validation
+- Menu-driven console applications
+- Hotel booking logic and status tracking
+
+## Author
+
+AshotoX
+
+## License
+
+This project is intended for educational and demonstration purposes.
