@@ -86,8 +86,5 @@ This project helps practice:
 
 ## Author
 
-AshotoX
-
-## License
-
+Ashish Kumar
 This project is intended for educational and demonstration purposes.
